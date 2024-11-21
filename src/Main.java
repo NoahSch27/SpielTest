@@ -25,7 +25,8 @@ public class Main {
 
     public static void gameRoundStart(int trinken, int holz, int beeren, int leben, int durst, int hunger, int tag, int energie, String playerName) {
         System.out.println("Ein neuer Tag ist angebrochen");
-        energie = 5;
+        tag++;
+        energie = 10;
         for (int stunde = 0; stunde <= 10; stunde++) {
             System.out.println("Tag " + (tag) + " Stunde " + (stunde));
             playerAndInventory.playerStatsAndInv(trinken, holz, beeren, leben, durst, hunger, playerName);
@@ -35,9 +36,9 @@ public class Main {
                 --leben;
                 --energie;
                 --energie;
-
+                playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
             } else {
-                System.out.println("Test");
+                playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
             }
         }
     }
