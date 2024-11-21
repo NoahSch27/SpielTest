@@ -11,7 +11,8 @@ public class playerAction {
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
         if (action == 1) {
-            System.out.println("Du ");
+            trinken += collectWater();
+            Main.gameRoundStart(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
         } else if (action == 2) {
 
         } else if (action == 3) {
@@ -20,9 +21,10 @@ public class playerAction {
             Main.gameRoundStart(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
         }
     }
-    static int collectWater(int trinken) {
+    static int collectWater() {
         Random random = new Random();
         int foundWater = random.nextInt(3);
+        System.out.println("Du hast " + foundWater + " Trinken gefunden.");
         return foundWater;
     }
 }

@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main (String [] args) {
         // Material
@@ -27,19 +25,22 @@ public class Main {
         System.out.println("Ein neuer Tag ist angebrochen");
         tag++;
         energie = 10;
-        for (int stunde = 0; stunde <= 10; stunde++) {
-            System.out.println("Tag " + (tag) + " Stunde " + (stunde));
-            playerAndInventory.playerStatsAndInv(trinken, holz, beeren, leben, durst, hunger, playerName);
-            if (playerAttack.monsterAttack(tag)) {
-                System.out.println("Oh nein, du wurdest von Monstern angegriffen.");
-                System.out.println("Das hat dich ein Leben und zwei Energie gekostet.");
-                --leben;
-                --energie;
-                --energie;
-                playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
-            } else {
-                playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
-            }
+        newGameHour(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
+        }
+        public static void newGameHour(int trinken, int holz, int beeren, int leben, int durst, int hunger, int tag, int energie, String playerName) {
+            for (int stunde = 0; stunde <= 10; stunde++) {
+                System.out.println("Tag " + (tag) + " Stunde " + (stunde));
+                playerAndInventory.playerStatsAndInv(trinken, holz, beeren, leben, durst, hunger, playerName);
+                if (playerAttack.monsterAttack(tag)) {
+                    System.out.println("Oh nein, du wurdest von Monstern angegriffen.");
+                    System.out.println("Das hat dich ein Leben und zwei Energie gekostet.");
+                    --leben;
+                    --energie;
+                    --energie;
+                    playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
+                } else {
+                    playerAction.playerActions(trinken, holz, beeren, leben, durst, hunger, tag, energie, playerName);
+                }
         }
     }
 }
